@@ -1,0 +1,52 @@
+CHANGER LE OWNER DU PROJET:
+
+eas whoami
+
+{
+  "expo": {
+    "name": "MusicApp",
+    "slug": "music-app",
+    "owner": "ton_nom_utilisateur", // ← modifie ici
+    "version": "1.0.0",
+    "android": {
+      "package": "com.tonapp.music"
+    }
+  }
+}
+
+Create Expo Project on expo.dev
+
+eas init --id your-created-expo-project-id
+
+
+
+Si tu as installé des modules non supportés (ex : react-native-vision-camera, react-native-track-player, ou des modules avec npx expo install:config), Expo Go ne pourra pas les charger. Expo Go ne supporte que les modules inclus dans le SDK Expo. Donc vous devez faire du build avans de lancer le projet
+
+npm install -g eas-cli
+
+{
+  "cli": {
+    "version": ">= 3.0.0"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "distribution": "internal"
+    },
+    "production": {
+      "distribution": "store"
+    }
+  }
+}
+
+
+
+eas build --profile development --platform android # Crée un build de développement Android
+
+
+adb install path/to/your-app.apk ou  # Installe le build généré sur l’émulateur
+
+npx expo start --dev-client # Lance l’app en mode Dev Client eas build:run --platform android
